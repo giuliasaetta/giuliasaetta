@@ -1297,84 +1297,238 @@ footer {
       </div>
     </div>
   </div>
-  <!-- SELECTED PUBLICATIONS & EXHIBITIONS -->
-<div style="margin-top:48px" class="reveal">
-
-  <div class="section-label">Selected Publications & Exhibitions</div>
-
-  <div class=".practice-list{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:24px;
+  <style>
+/* ===== LAYOUT BASE ===== */
+.page-container{
   width:100%;
   max-width:1200px;
   margin:0 auto;
-}">
+  padding:0 80px;
+  box-sizing:border-box;
+}
 
-    <div class=".practice-item{
-  border-bottom:1px solid rgba(255,255,255,0.08);
-  padding:18px 0;
-}">
-      <a href="https://amslaurea.unibo.it/id/eprint/24202/" target="_blank" class="practice-link">
-        Origo — Artistic Connections <span class="arrow">↗</span>
-      </a>
-      <div class="practice-meta">University of Bologna · Published project</div>
-    </div>
+/* ===== SECTION TITLE ===== */
+.section-label{
+  font-size:12px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  opacity:0.6;
+  margin-bottom:24px;
+}
 
-    <div class=".practice-item{
-  border-bottom:1px solid rgba(255,255,255,0.08);
-  padding:18px 0;
-}">
-      <a href="https://innose.up.krakow.pl/blog/2021/02/08/how-we-can-stimulate-innovative-entrepreneurship-with-a-social-impact-among-young-people-looking-for-opportunities-or-aspiring-entrepreneurs-through-innovative-services/" target="_blank" class="practice-link">
-        Intense — Tech & Social Innovation <span class="arrow">↗</span>
-      </a>
-      <div class="practice-meta">Inn@se Conference · Presented work</div>
-    </div>
+/* ===== GRID EDITORIALE ===== */
+.practice-list{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:0 40px;
+}
 
-    <div class=".practice-item{
-  border-bottom:1px solid rgba(255,255,255,0.08);
+/* ITEM = SOLO LINEA */
+.practice-item{
   padding:18px 0;
-}">
-      <a href="https://www.repubblica.it/" target="_blank" class="practice-link">
-        Comfort Zone <span class="arrow">↗</span>
-      </a>
-      <div class="practice-meta">La Repubblica · Featured publication</div>
-    </div>
+  border-bottom:1px solid rgba(255,255,255,0.10);
+}
 
-    <div class=".practice-item{
-  border-bottom:1px solid rgba(255,255,255,0.08);
-  padding:18px 0;
-}">
-      <div class="practice-link">
-        12 POSE — Photography Collective
+/* LINK */
+.practice-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  color:inherit;
+  font-size:15px;
+  font-weight:500;
+  position:relative;
+  transition:transform .25s ease;
+}
+
+/* underline animata editoriale */
+.practice-link::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:0%;
+  height:1px;
+  background:#ff3b3b;
+  transition:width .35s ease;
+}
+
+.practice-link:hover{
+  transform:translateX(6px);
+}
+
+.practice-link:hover::after{
+  width:100%;
+}
+
+/* FRECCIA ANIMATA */
+.arrow{
+  color:#ff3b3b;
+  font-weight:700;
+  display:inline-block;
+  transition:transform .4s cubic-bezier(.2,.8,.2,1);
+}
+
+.practice-link:hover .arrow{
+  transform:translate(8px,-6px) rotate(15deg);
+}
+
+/* META */
+.practice-meta{
+  font-size:13px;
+  opacity:0.55;
+  margin-top:6px;
+}
+
+/* ===== CONTACT FULL WIDTH ===== */
+.contact-section{
+  width:100%;
+  padding:120px 0;
+  text-align:center;
+  position:relative;
+}
+
+.contact-inner{
+  max-width:900px;
+  margin:0 auto;
+  padding:0 40px;
+}
+
+.contact-h2{
+  font-size:42px;
+  line-height:1.1;
+  margin-bottom:16px;
+}
+
+.contact-h2 span{
+  color:#ff3b3b;
+}
+
+.contact-sub{
+  opacity:0.7;
+  margin-bottom:32px;
+}
+
+.contact-links a{
+  display:inline-block;
+  margin:0 10px;
+  padding:10px 18px;
+  border:1px solid rgba(255,255,255,0.2);
+  text-decoration:none;
+  transition:.3s;
+}
+
+.contact-links a:hover{
+  border-color:#ff3b3b;
+  transform:translateY(-2px);
+}
+
+/* ===== FOOTER FULL WIDTH ===== */
+footer{
+  width:100%;
+  text-align:center;
+  padding:40px 0;
+  opacity:0.6;
+  font-size:13px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1000px){
+  .practice-list{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .page-container{
+    padding:0 40px;
+  }
+}
+
+@media (max-width: 600px){
+  .practice-list{
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<!-- ===== SELECTED PUBLICATIONS ===== -->
+<div class="page-container">
+
+  <div style="margin-top:48px;">
+    <div class="section-label">Selected Publications & Exhibitions</div>
+
+    <div class="practice-list">
+
+      <div class="practice-item">
+        <a href="https://amslaurea.unibo.it/id/eprint/24202/" target="_blank" class="practice-link">
+          Origo — Artistic Connections <span class="arrow">↗</span>
+        </a>
+        <div class="practice-meta">University of Bologna · Published project</div>
       </div>
-      <div class="practice-meta">Rome · Exhibition</div>
-    </div>
 
-    <div class=".practice-item{
-  border-bottom:1px solid rgba(255,255,255,0.08);
-  padding:18px 0;
-}">
-      <a href="https://abaroma.it/pulsazioni-multimediali-una-mostra-di-studenti-allex-mattatoio/" target="_blank" class="practice-link">
-        Mattatoio EX Macro <span class="arrow">↗</span>
-      </a>
-      <div class="practice-meta">Rome · Group exhibition</div>
-    </div>
-
-    <div class=".practice-item{
-  border-bottom:1px solid rgba(255,255,255,0.08);
-  padding:18px 0;
-}">
-      <div class="practice-link">
-        Video Art Collective
+      <div class="practice-item">
+        <a href="https://innose.up.krakow.pl/blog/2021/02/08/how-we-can-stimulate-innovative-entrepreneurship-with-a-social-impact-among-young-people-looking-for-opportunities-or-aspiring-entrepreneurs-through-innovative-services/" target="_blank" class="practice-link">
+          Intense — Tech & Social Innovation <span class="arrow">↗</span>
+        </a>
+        <div class="practice-meta">Inn@se Conference · Presented work</div>
       </div>
-      <div class="practice-meta">Universitat Politècnica de València</div>
-    </div>
 
-   </div>
+      <div class="practice-item">
+        <a href="https://www.repubblica.it/" target="_blank" class="practice-link">
+          Comfort Zone <span class="arrow">↗</span>
+        </a>
+        <div class="practice-meta">La Repubblica · Featured publication</div>
       </div>
+
+      <div class="practice-item">
+        <div class="practice-link">
+          12 POSE — Photography Collective
+        </div>
+        <div class="practice-meta">Rome · Exhibition</div>
+      </div>
+
+      <div class="practice-item">
+        <a href="https://abaroma.it/pulsazioni-multimediali-una-mostra-di-studenti-allex-mattatoio/" target="_blank" class="practice-link">
+          Mattatoio EX Macro <span class="arrow">↗</span>
+        </a>
+        <div class="practice-meta">Rome · Group exhibition</div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-link">
+          Video Art Collective
+        </div>
+        <div class="practice-meta">Universitat Politècnica de València</div>
+      </div>
+
     </div>
   </div>
+
+</div>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact-section">
+  <div class="contact-inner">
+
+    <h2 class="contact-h2">
+      Let's make something<br><span>that matters.</span>
+    </h2>
+
+    <p class="contact-sub">
+      Open to Strategic Design, Product Strategy & Service Design roles.
+    </p>
+
+    <div class="contact-links">
+      <a href="mailto:giuliasaetta@live.it">Email</a>
+      <a href="https://www.linkedin.com/in/giuliasaetta/" target="_blank">LinkedIn</a>
+      <a href="https://giuliasaetta.wixsite.com/giuliasaettadesign" target="_blank">Portfolio</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  Giulia Saetta · Designed & coded · June 2026
+</footer>
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
 
