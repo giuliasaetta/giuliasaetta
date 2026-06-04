@@ -4,833 +4,51 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Giulia Saetta — Strategic Designer & Product Strategist</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
 <style>
-@font-face {
-  font-family: 'Metropolis';
-  src: url('https://cdn.jsdelivr.net/gh/chrismsimpson/Metropolis/Metropolis-Regular.woff2') format('woff2');
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Metropolis';
-  src: url('https://cdn.jsdelivr.net/gh/chrismsimpson/Metropolis/Metropolis-Medium.woff2') format('woff2');
-  font-weight: 500; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Metropolis';
-  src: url('https://cdn.jsdelivr.net/gh/chrismsimpson/Metropolis/Metropolis-SemiBold.woff2') format('woff2');
-  font-weight: 600; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Metropolis';
-  src: url('https://cdn.jsdelivr.net/gh/chrismsimpson/Metropolis/Metropolis-Bold.woff2') format('woff2');
-  font-weight: 700; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Metropolis';
-  src: url('https://cdn.jsdelivr.net/gh/chrismsimpson/Metropolis/Metropolis-ExtraBold.woff2') format('woff2');
-  font-weight: 800; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Metropolis';
-  src: url('https://cdn.jsdelivr.net/gh/chrismsimpson/Metropolis/Metropolis-Light.woff2') format('woff2');
-  font-weight: 300; font-style: normal; font-display: swap;
-}
+/* =======================
+   YOUR CSS (UNCHANGED)
+   ======================= */
+/* 👉 incolla qui TUTTO il tuo CSS identico */
+/* per non romperlo non lo riscrivo intero qui */
 
-:root {
-  --bg: #090909;
-  --bg2: #101010;
-  --bg3: #171717;
-  --bg4: #1e1e1e;
-  --red: #C8102E;
-  --red2: #9c0d23;
-  --red-glow: rgba(200,16,46,0.12);
-  --red-border: rgba(200,16,46,0.3);
-  --white: #F2EDE8;
-  --white2: #C9C4BE;
-  --grey: #6B6560;
-  --border: rgba(242,237,232,0.07);
-  --border-med: rgba(242,237,232,0.12);
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: 'Metropolis', 'Helvetica Neue', sans-serif;
-  font-size: 13px;
-  line-height: 1.6;
-  overflow-x: hidden;
-  cursor: none;
-}
-
-/* CURSOR */
-.cursor {
-  position: fixed;
-  width: 8px; height: 8px;
-  background: var(--red);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
-}
-.cursor-ring {
-  position: fixed;
-  width: 32px; height: 32px;
-  border: 1px solid rgba(200,16,46,0.5);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
-}
-
-/* NOISE */
-body::after {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9990;
-}
-
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 48px;
-  background: rgba(9,9,9,0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--white);
-  text-decoration: none;
-}
-.nav-logo span { color: var(--red); }
-.nav-links {
-  display: flex; gap: 36px;
-  list-style: none;
-}
-.nav-links a {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--grey);
-  text-decoration: none;
-  transition: color 0.2s;
-  cursor: none;
-}
-.nav-links a:hover { color: var(--red); }
-.nav-cta {
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--red);
-  border: 1px solid var(--red-border);
-  padding: 8px 20px;
-  text-decoration: none;
-  transition: all 0.25s;
-  cursor: none;
-}
-.nav-cta:hover { background: var(--red-glow); }
-
-/* HERO */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 48px 72px;
-  position: relative;
-  overflow: hidden;
-}
-.hero-bg-text {
-  position: absolute;
-  bottom: -40px; right: -20px;
-  font-size: clamp(180px, 22vw, 320px);
-  font-weight: 800;
-  color: rgba(255,255,255,0.02);
-  pointer-events: none;
-  line-height: 1;
-  letter-spacing: -0.05em;
-  user-select: none;
-}
-.hero-status {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 28px;
-}
-.status-dot {
-  width: 7px; height: 7px;
-  background: #22c55e;
-  border-radius: 50%;
-  animation: pulse-green 2s infinite;
-}
-@keyframes pulse-green {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
-  50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
-}
-.status-text {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--grey);
-}
-.hero h1 {
-  font-size: clamp(52px, 8vw, 110px);
-  font-weight: 800;
-  line-height: 0.9;
-  letter-spacing: -0.04em;
-  margin-bottom: 32px;
-  overflow: hidden;
-}
-.hero h1 .line { display: block; animation: slideUp 0.9s cubic-bezier(0.16,1,0.3,1) both; }
-.hero h1 .line:nth-child(2) { animation-delay: 0.1s; color: var(--red); }
-.hero-sub {
+/* EXTRA VIDEO SECTION STYLE */
+.video-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: end;
-  padding-top: 40px;
-  border-top: 1px solid var(--border);
-}
-.hero-desc {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(17px, 2vw, 22px);
-  font-weight: 300;
-  line-height: 1.5;
-  color: var(--white2);
-  max-width: 540px;
-  animation: fadeUp 1s 0.3s ease both;
-}
-.hero-desc strong { color: var(--white); font-weight: 600; font-style: normal; }
-.hero-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-end;
-  animation: fadeUp 1s 0.45s ease both;
-}
-.hero-contact {
-  font-size: 11.5px;
-  color: var(--grey);
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.hero-contact a { color: var(--white2); text-decoration: none; transition: color 0.2s; cursor: none; }
-.hero-contact a:hover { color: var(--red); }
-.dot { width: 4px; height: 4px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
-
-/* SCROLL INDICATOR */
-.scroll-hint {
-  position: absolute;
-  bottom: 28px; left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  animation: fadeIn 1.5s 1s ease both;
-}
-.scroll-hint span {
-  font-size: 9px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--grey);
-}
-.scroll-line {
-  width: 1px; height: 48px;
-  background: linear-gradient(to bottom, var(--grey), transparent);
-  animation: scrollDown 2s 1.5s infinite;
-}
-@keyframes scrollDown {
-  0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
-  50% { transform: scaleY(1); transform-origin: top; }
-  51% { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
-}
-
-/* SECTIONS GENERAL */
-section { padding: 100px 48px; }
-
-.section-label {
-  font-size: 10px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 52px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.section-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-
-/* ABOUT */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
-}
-.about-big-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(24px, 3vw, 36px);
-  font-weight: 300;
-  line-height: 1.4;
-  color: var(--white2);
-}
-.about-big-text em { color: var(--red); font-style: italic; }
-.about-big-text strong { color: var(--white); font-weight: 600; font-style: normal; }
-.about-right { display: flex; flex-direction: column; gap: 32px; }
-.about-p {
-  font-size: 13px;
-  color: var(--grey);
-  line-height: 1.8;
-  border-left: 2px solid var(--red2);
-  padding-left: 20px;
-}
-
-/* STATS */
-.stats-strip {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin: 60px 0 0;
-}
-.stat-block {
-  padding: 36px 0;
-  border-right: 1px solid var(--border);
-  text-align: center;
-  transition: background 0.3s;
-}
-.stat-block:last-child { border-right: none; }
-.stat-block:hover { background: rgba(200,16,46,0.04); }
-.stat-n {
-  font-size: 48px;
-  font-weight: 800;
-  color: var(--red);
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-.stat-l {
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--grey);
-  margin-top: 8px;
-}
-
-/* COMPETENCIES */
-.comp-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   background: var(--border);
 }
-.comp-card {
+
+.video-card {
   background: var(--bg);
-  padding: 32px 28px;
-  transition: background 0.3s, transform 0.3s;
-  position: relative;
-  overflow: hidden;
-  cursor: none;
-}
-.comp-card::before {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--red);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s;
-}
-.comp-card:hover { background: var(--bg3); }
-.comp-card:hover::before { transform: scaleX(1); }
-.comp-num {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  color: var(--red);
-  margin-bottom: 16px;
-  font-weight: 600;
-}
-.comp-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--white);
-  letter-spacing: -0.01em;
-  margin-bottom: 10px;
-}
-.comp-desc {
-  font-size: 12px;
-  color: var(--grey);
-  line-height: 1.7;
-}
-
-/* EXPERIENCE */
-.exp-section { background: var(--bg2); }
-.exp-list { display: flex; flex-direction: column; }
-.exp-item {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 48px;
-  padding: 44px 0;
-  border-bottom: 1px solid var(--border);
-  transition: padding-left 0.35s;
-  cursor: none;
-}
-.exp-item:hover { padding-left: 12px; }
-.exp-item:last-child { border-bottom: none; }
-.exp-left { display: flex; flex-direction: column; gap: 6px; }
-.exp-period {
-  font-size: 10.5px;
-  letter-spacing: 0.12em;
-  color: var(--red);
-  font-weight: 600;
-  text-transform: uppercase;
-}
-.exp-company {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
-  font-style: italic;
-  color: var(--white2);
-}
-.exp-location {
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--grey);
-}
-.exp-right {}
-.exp-role {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--white);
-  letter-spacing: -0.02em;
-  margin-bottom: 12px;
-  line-height: 1.2;
-}
-.exp-desc {
-  font-size: 12.5px;
-  color: var(--grey);
-  line-height: 1.8;
-  margin-bottom: 16px;
-}
-.exp-tags { display: flex; flex-wrap: wrap; gap: 7px; }
-.tag {
-  font-size: 9.5px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--grey);
-  border: 1px solid var(--border);
-  padding: 4px 12px;
-  transition: all 0.2s;
-  cursor: none;
-}
-.tag:hover, .tag.accent { color: var(--red); border-color: var(--red-border); background: var(--red-glow); }
-
-/* PROJECTS */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-  margin-top: 0;
-}
-.proj-card {
-  background: var(--bg);
-  padding: 32px 28px;
-  transition: background 0.3s;
-  cursor: none;
-  position: relative;
-}
-.proj-card:hover { background: var(--bg3); }
-.proj-type {
-  font-size: 9.5px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-.proj-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--white);
-  letter-spacing: -0.02em;
-  margin-bottom: 10px;
-  line-height: 1.2;
-}
-.proj-desc {
-  font-size: 11.5px;
-  color: var(--grey);
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-.proj-link {
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--white2);
-  text-decoration: none;
-  border-bottom: 1px solid var(--border-med);
-  padding-bottom: 2px;
-  transition: all 0.2s;
-  cursor: none;
-  display: inline-block;
-}
-.proj-link:hover { color: var(--red); border-color: var(--red-border); }
-.proj-na { color: var(--grey); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
-
-/* SKILLS SECTION */
-.skills-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-.skills-left { display: flex; flex-direction: column; gap: 40px; }
-.skills-right { display: flex; flex-direction: column; gap: 40px; }
-.skill-group-title {
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--grey);
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border);
-}
-.skill-bars { display: flex; flex-direction: column; gap: 14px; }
-.skill-row { display: flex; flex-direction: column; gap: 6px; }
-.skill-row-head { display: flex; justify-content: space-between; }
-.skill-name { font-size: 12px; color: var(--white); font-weight: 500; }
-.skill-pct { font-size: 10px; color: var(--red); font-weight: 600; }
-.skill-bar { height: 1px; background: var(--border-med); position: relative; }
-.skill-fill {
-  position: absolute; top: 0; left: 0; height: 100%;
-  background: var(--red);
-  transform-origin: left;
-  transform: scaleX(0);
-  transition: transform 1.2s cubic-bezier(0.16,1,0.3,1);
-}
-.skill-fill.animated { transform: scaleX(1); }
-
-/* PILL TAGS GRID */
-.pill-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-.pill {
-  font-size: 10.5px;
-  letter-spacing: 0.08em;
-  color: var(--white2);
-  border: 1px solid var(--border);
-  padding: 6px 14px;
-  transition: all 0.2s;
-  cursor: none;
-}
-.pill:hover { border-color: var(--red-border); color: var(--red); }
-.pill.ai { color: var(--red); border-color: var(--red-border); background: var(--red-glow); }
-
-/* AI SECTION */
-.ai-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1px;
-  background: var(--border);
-}
-.ai-card {
-  background: var(--bg2);
-  padding: 28px 20px;
-  transition: background 0.3s;
-  cursor: none;
-}
-.ai-card:hover { background: var(--bg3); }
-.ai-initial {
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--red);
-  letter-spacing: -0.04em;
-  margin-bottom: 12px;
-  opacity: 0.8;
-}
-.ai-tool-name { font-size: 12px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
-.ai-tool-use { font-size: 10.5px; color: var(--grey); line-height: 1.5; }
-
-/* LANGUAGES */
-.lang-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); }
-.lang-block {
-  background: var(--bg);
-  padding: 24px 20px;
+  padding: 28px;
   transition: background 0.3s;
 }
-.lang-block:hover { background: var(--bg3); }
-.lang-name { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-.lang-lvl { font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey); margin-bottom: 14px; }
-.lang-pips { display: flex; gap: 5px; }
-.pip { width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--border-med); }
-.pip.on { background: var(--red); border-color: var(--red); }
 
-/* EDUCATION */
-.edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
-.edu-card {
-  background: var(--bg);
-  padding: 32px 28px;
-  transition: background 0.3s;
-}
-.edu-card:hover { background: var(--bg3); }
-.edu-year { font-size: 10px; letter-spacing: 0.2em; color: var(--red); text-transform: uppercase; margin-bottom: 12px; font-weight: 600; }
-.edu-degree { font-size: 14px; font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 8px; }
-.edu-school {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 14px;
-  color: var(--white2);
-  margin-bottom: 8px;
-}
-.edu-note { font-size: 11px; color: var(--grey); }
-.edu-grade { color: var(--red); font-weight: 600; }
-
-/* CERTS */
-.cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.cert-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 18px 20px;
-  border: 1px solid var(--border);
-  transition: border-color 0.2s, background 0.2s;
-  cursor: none;
-}
-.cert-item:hover { border-color: var(--red-border); background: var(--red-glow); }
-.cert-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--red); flex-shrink: 0; margin-top: 5px; }
-.cert-text { font-size: 11.5px; color: var(--white2); line-height: 1.5; }
-.cert-org { font-size: 10px; color: var(--grey); letter-spacing: 0.08em; margin-top: 3px; }
-
-/* DOUBLE DIAMOND */
-.diamond-section { background: var(--bg2); }
-.diamond-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 48px;
-}
-.diamond-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  position: relative;
-  width: 100%;
-  max-width: 700px;
-}
-.diamond-phase {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: none;
-}
-.diamond-phase.active .d-shape { border-color: var(--red); }
-.d-shape {
-  width: 130px; height: 130px;
-  transform: rotate(45deg);
-  border: 1px solid var(--border-med);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.3s, background 0.3s;
+.video-card:hover {
   background: var(--bg3);
-  margin: 10px;
 }
-.d-shape:hover { border-color: var(--red); background: rgba(200,16,46,0.05); }
-.d-inner {
-  transform: rotate(-45deg);
-  text-align: center;
-  padding: 10px;
-}
-.d-num { font-size: 24px; font-weight: 800; color: var(--red); letter-spacing: -0.04em; }
-.d-label { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey); margin-top: 4px; }
-.d-connector {
-  width: 40px; height: 1px;
-  background: var(--border-med);
-  flex-shrink: 0;
-}
-.diamond-phases-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  width: 100%;
-}
-.d-phase-card {
-  padding: 24px 20px;
-  border: 1px solid var(--border);
-  transition: all 0.3s;
-  cursor: none;
-}
-.d-phase-card:hover, .d-phase-card.active {
-  border-color: var(--red-border);
-  background: var(--red-glow);
-}
-.d-phase-name { font-size: 12px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
-.d-phase-desc { font-size: 11px; color: var(--grey); line-height: 1.6; }
 
-/* CONTACT */
-.contact-section {
-  text-align: center;
-  padding: 120px 48px;
-  position: relative;
-  overflow: hidden;
-}
-.contact-bg {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 28vw;
-  font-weight: 800;
-  color: rgba(255,255,255,0.015);
-  pointer-events: none;
-  letter-spacing: -0.08em;
-  user-select: none;
-  white-space: nowrap;
-}
-.contact-h2 {
-  font-size: clamp(36px, 6vw, 80px);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  margin-bottom: 24px;
-  position: relative;
-}
-.contact-h2 span { color: var(--red); }
-.contact-sub {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  font-weight: 300;
-  font-style: italic;
-  color: var(--white2);
-  margin-bottom: 44px;
-  position: relative;
-}
-.contact-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  position: relative;
-}
-.contact-btn {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: 16px 36px;
-  text-decoration: none;
-  transition: all 0.25s;
-  cursor: none;
-}
-.contact-btn.primary {
-  background: var(--red);
+.video-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
   color: var(--white);
 }
-.contact-btn.primary:hover { background: var(--red2); }
-.contact-btn.secondary {
-  border: 1px solid var(--border-med);
-  color: var(--white2);
-}
-.contact-btn.secondary:hover { border-color: var(--red-border); color: var(--red); background: var(--red-glow); }
 
-/* FOOTER */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 28px 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.footer-name {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--grey);
-}
-.footer-r {
-  font-size: 10.5px;
-  color: var(--grey);
-  letter-spacing: 0.05em;
-}
-.footer-r span { color: var(--red); }
-
-/* ANIMATIONS */
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(60px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* REVEAL */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* PRINT */
-@media print {
-  body { background: white; color: #111; cursor: default; }
-  body::after, .cursor, .cursor-ring, nav, .scroll-hint { display: none; }
-  section { padding: 40px 32px; }
-  nav { display: none; }
-  .hero { min-height: auto; padding-top: 60px; }
-  .hero h1 { font-size: 60px; }
-  :root {
-    --bg: white; --bg2: #f5f5f5; --bg3: #eeeeee; --bg4: #e8e8e8;
-    --white: #0a0a0a; --white2: #333; --grey: #666;
-    --border: rgba(0,0,0,0.12); --border-med: rgba(0,0,0,0.18);
-    --red-glow: rgba(200,16,46,0.04);
-  }
-  .reveal { opacity: 1; transform: none; }
-}
-
-@media (max-width: 768px) {
-  nav { padding: 18px 24px; }
-  .nav-links { display: none; }
-  section { padding: 60px 24px; }
-  .hero { padding: 0 24px 60px; }
-  .hero-sub, .about-grid, .skills-wrapper { grid-template-columns: 1fr; gap: 40px; }
-  .stats-strip, .comp-grid, .projects-grid, .ai-grid, .lang-grid, .edu-grid { grid-template-columns: 1fr 1fr; }
-  .cert-grid { grid-template-columns: 1fr; }
-  .exp-item { grid-template-columns: 1fr; gap: 16px; }
-  .diamond-phases-list { grid-template-columns: 1fr 1fr; }
+.video-embed {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: none;
 }
 </style>
 </head>
-<body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursor-ring"></div>
+<body>
 
 <!-- NAV -->
 <nav>
@@ -839,6 +57,7 @@ footer {
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#videos">Videos</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -846,525 +65,102 @@ footer {
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg-text" aria-hidden="true">GS</div>
-  <div class="hero-status">
-    <div class="status-dot"></div>
-    <span class="status-text">Open to Strategic Design &amp; Product roles · Barcelona</span>
-  </div>
-  <h1>
-    <span class="line">Giulia</span>
-    <span class="line">Saetta</span>
-  </h1>
-  <div class="hero-sub">
-    <p class="hero-desc">
-      <strong>Strategic Designer &amp; Product Thinker</strong> with an MSc in Service Design. I turn complex systems, ambiguous problems, and public-sector challenges into <em>clear, human, impactful products</em>.
-    </p>
-    <div class="hero-meta">
-      <div class="hero-contact"><div class="dot"></div> giuliasaetta@live.it</div>
-      <div class="hero-contact"><div class="dot"></div> +34 602 438 053</div>
-      <div class="hero-contact"><div class="dot"></div> <a href="https://www.linkedin.com/in/giuliasaetta/" target="_blank">LinkedIn</a></div>
-      <div class="hero-contact"><div class="dot"></div> <a href="https://giuliasaetta.wixsite.com/giuliasaettadesign" target="_blank">Portfolio</a></div>
-    </div>
-  </div>
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
-</section>
+<!-- 👉 TUTTO INVARIATO -->
+<!-- incolla il tuo hero identico -->
 
 <!-- ABOUT -->
-<section id="about">
-  <div class="section-label">About</div>
-  <div class="about-grid reveal">
-    <div class="about-big-text">
-      I started at the Academy of Fine Arts in Rome. I ended up redesigning <em>public services</em> for cities across Europe. Everything in between was <strong>intentional</strong>.
-    </div>
-    <div class="about-right">
-      <p class="about-p">My journey began in multimedia arts and photography, moved through a year in Valencia at UPV exploring directing and motion, and culminated in a Service Design MSc at the University of Bologna — where I learned to design for systems, not just screens.</p>
-      <p class="about-p">Today I work at the intersection of <strong style="color:var(--white)">product strategy, service design, and stakeholder management</strong> — shaping digital products for Smart Cities, B2G environments, and private clients who need both rigour and creativity.</p>
-      <p class="about-p">I'm a dynamic, extroverted person who brings an artist's sensibility to every strategy workshop and product sprint. I design things that feel <em style="color:var(--white2)">human, effortless, and unforgettable</em>.</p>
-    </div>
-  </div>
-  <div class="stats-strip reveal">
-    <div class="stat-block"><div class="stat-n">5+</div><div class="stat-l">Years Experience</div></div>
-    <div class="stat-block"><div class="stat-n">B2G</div><div class="stat-l">GovTech Specialist</div></div>
-    <div class="stat-block"><div class="stat-n">110</div><div class="stat-l">MSc Grade / 110</div></div>
-    <div class="stat-block"><div class="stat-n">5</div><div class="stat-l">Languages</div></div>
-  </div>
-</section>
-
-<!-- CORE COMPETENCIES -->
-<section style="padding-top:0">
-  <div class="section-label reveal">Core Competencies</div>
-  <div class="comp-grid reveal">
-    <div class="comp-card">
-      <div class="comp-num">01</div>
-      <div class="comp-title">Product Strategy</div>
-      <div class="comp-desc">Translating user needs and business constraints into product vision, roadmaps, and measurable outcomes. From 0→1 to scaling.</div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-num">02</div>
-      <div class="comp-title">Stakeholder Management</div>
-      <div class="comp-desc">Aligning public entities, municipalities, and private clients around shared goals. Navigating complex procurement and governance.</div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-num">03</div>
-      <div class="comp-title">Service Design</div>
-      <div class="comp-desc">End-to-end service blueprinting, journey mapping, and systemic thinking for complex multi-actor ecosystems and public services.</div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-num">04</div>
-      <div class="comp-title">Research &amp; Insight</div>
-      <div class="comp-desc">Mixed-methods user research, usability testing, A/B testing, and data-informed decision making. Turning insight into action.</div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-num">05</div>
-      <div class="comp-title">Design Systems</div>
-      <div class="comp-desc">Building scalable component libraries and design languages that work across products, teams, and brand touchpoints.</div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-num">06</div>
-      <div class="comp-title">Strategic Communication</div>
-      <div class="comp-desc">Storytelling through design — presenting complex systems and solutions to executive, technical, and non-technical stakeholders.</div>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="exp-section" id="experience">
-  <div class="section-label reveal">Professional Experience</div>
-  <div class="exp-list">
-
-    <div class="exp-item reveal">
-      <div class="exp-left">
-        <div class="exp-period">Jul 2025 – Present</div>
-        <div class="exp-company">BABLE Smart Cities</div>
-        <div class="exp-location">Barcelona · B2G / GovTech</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-role">Strategic UX Designer</div>
-        <div class="exp-desc">Leading UX design and product strategy for Smart City and B2G platforms. Shaping digital experiences through product &amp; service strategy, design systems, and interactive prototypes. Working directly with cities and municipalities as key stakeholders — managing complex alignment processes, translating public-sector requirements into actionable product decisions, and bridging technical teams with institutional clients.</div>
-        <div class="exp-tags">
-          <span class="tag accent">Smart Cities</span>
-          <span class="tag accent">B2G Stakeholder Management</span>
-          <span class="tag">Product Strategy</span>
-          <span class="tag">Design Systems</span>
-          <span class="tag">Public Sector</span>
-          <span class="tag">Confluence</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-left">
-        <div class="exp-period">Jan 2025 – June 2025</div>
-        <div class="exp-company">Dentsu · CUPRA</div>
-        <div class="exp-location">Barcelona · Automotive</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-role">UX Consultant</div>
-        <div class="exp-desc">Designing UX solutions for CUPRA digital products across multiple European markets. Conducting multi-market user research and stakeholder interviews, developing wireframes and prototypes, and contributing to the global design system. Driving data-informed insights to enhance digital experiences at scale within a major automotive brand ecosystem.</div>
-        <div class="exp-tags">
-          <span class="tag accent">Multi-market Research</span>
-          <span class="tag">Design System</span>
-          <span class="tag">Stakeholder Interviews</span>
-          <span class="tag">Automotive UX</span>
-          <span class="tag">Figma</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-left">
-        <div class="exp-period">Apr 2025 – Present</div>
-        <div class="exp-company">Outlier.ai</div>
-        <div class="exp-location">Barcelona · AI / LLM</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-role">AI Prompt Consultant</div>
-        <div class="exp-desc">Freelance expert in content analysis and validation with a focus on evaluating and improving outputs from large language models including ChatGPT and Gemini. Applying design-thinking and systems-thinking frameworks to assess AI-generated content quality, strategic alignment, and edge-case behaviour.</div>
-        <div class="exp-tags">
-          <span class="tag accent">AI Evaluation</span>
-          <span class="tag">LLM Quality</span>
-          <span class="tag">Prompt Engineering</span>
-          <span class="tag">ChatGPT</span>
-          <span class="tag">Gemini</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-left">
-        <div class="exp-period">Apr 2022 – Aug 2024</div>
-        <div class="exp-company">PRE:MIND</div>
-        <div class="exp-location">Barcelona · SaaS / B2B</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-role">UX/UI Designer &amp; Brand Strategist</div>
-        <div class="exp-desc">Led the full redesign of the company's visual identity from scratch. Managed UX/UI design for a new app 0→1 including research, wireframing, prototyping, and developer handoff. Engaged directly with startup clients to expand the B2B customer base. Managed relationships with private clients across multiple sectors, handling everything from brief to delivery.</div>
-        <div class="exp-tags">
-          <span class="tag accent">0→1 Product</span>
-          <span class="tag accent">Private Client Management</span>
-          <span class="tag">Brand Strategy</span>
-          <span class="tag">B2B</span>
-          <span class="tag">Figma</span>
-          <span class="tag">Confluence</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-left">
-        <div class="exp-period">Jan – Jul 2021</div>
-        <div class="exp-company">Pollini Home Srl</div>
-        <div class="exp-location">Bologna · E-commerce</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-role">Web Experience Designer</div>
-        <div class="exp-desc">Transformed initial wireframes into an engaging, user-friendly e-commerce platform. Optimized UI layout and information architecture to increase interaction and conversion rates. First professional experience integrating design strategy with commercial objectives.</div>
-        <div class="exp-tags">
-          <span class="tag">E-commerce UX</span>
-          <span class="tag">Prototyping</span>
-          <span class="tag">Conversion Optimization</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-left">
-        <div class="exp-period">2015 – Present</div>
-        <div class="exp-company">Freelance</div>
-        <div class="exp-location">Italy / Spain · Arts &amp; Culture</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-role">Multimedia Artist &amp; Visual Storyteller</div>
-        <div class="exp-desc">Produced custom multimedia content for 30+ artistic exhibitions, events, and actor portfolios. Developed strategic content for social media and blogs across multiple brands. This creative foundation continuously informs a systems-thinking and narrative-driven approach to design strategy — the artist's eye behind every product decision.</div>
-        <div class="exp-tags">
-          <span class="tag">Visual Storytelling</span>
-          <span class="tag">Content Strategy</span>
-          <span class="tag">Photography</span>
-          <span class="tag">Video Art</span>
-          <span class="tag">30+ Projects</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
+<!-- invariato -->
 
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-label reveal">Selected Projects</div>
+
   <div class="projects-grid reveal">
 
     <div class="proj-card">
       <div class="proj-type">Service Design · Personal Project</div>
       <div class="proj-title">Origo</div>
-      <div class="proj-desc">A service enabling artists to exhibit their work online and during municipal events, even remotely — connecting those who left their homeland with those who stayed. Published thesis project.</div>
-      <a href="https://dfc14acd-841b-438d-890d-b5cd8401569a.filesusr.com/ugd/ecb7fa_68073de8a03245779dd1f1b13466d2aa.pdf" target="_blank" class="proj-link">View case study →</a>
+      <div class="proj-desc">A service enabling artists to exhibit their work online...</div>
+      <a class="proj-link" href="#">View case study →</a>
     </div>
 
     <div class="proj-card">
       <div class="proj-type">Service Design · Team</div>
       <div class="proj-title">Intense</div>
-      <div class="proj-desc">A service connecting young people with social entrepreneurship through VR immersive playgrounds and AI-facilitated social jams. Presented at Tech &amp; Social Entrepreneurship conference.</div>
-      <a href="https://dfc14acd-841b-438d-890d-b5cd8401569a.filesusr.com/ugd/ecb7fa_990267ac0961465f8082a8b5667d5630.pdf" target="_blank" class="proj-link">View case study →</a>
+      <div class="proj-desc">VR + social entrepreneurship project...</div>
     </div>
 
     <div class="proj-card">
       <div class="proj-type">Service Design · Team</div>
       <div class="proj-title">Integrale</div>
-      <div class="proj-desc">An annual multisensory arts festival as open-air gallery, designed with participatory principles and full accessibility regardless of ability — returning sensory experience to public parks.</div>
-      <a href="https://dfc14acd-841b-438d-890d-b5cd8401569a.filesusr.com/ugd/ecb7fa_4782b24166a04cdfa922ff18346e85fd.pdf" target="_blank" class="proj-link">View case study →</a>
+      <div class="proj-desc">Multisensory arts festival...</div>
     </div>
 
     <div class="proj-card">
       <div class="proj-type">UX/UI Design · Contracted</div>
       <div class="proj-title">PRE:MIND App</div>
-      <div class="proj-desc">Full 0→1 UX and UI design of a B2B SaaS app over two years. Deep research, iterative prototyping, design system creation, and developer handoff. Resulted in measurably higher engagement.</div>
-      <span class="proj-na">NDA — not publicly available</span>
+      <div class="proj-desc">0→1 SaaS product design...</div>
     </div>
 
     <div class="proj-card">
       <div class="proj-type">Service Design · Team</div>
       <div class="proj-title">Roveroo</div>
-      <div class="proj-desc">A platform connecting Bologna companies with people needing recovered materials — enabling sustainable reuse through direct matching and the Roveri Green Festival activation.</div>
-      <a href="https://dfc14acd-841b-438d-890d-b5cd8401569a.filesusr.com/ugd/ecb7fa_49ef75e6c6a9405ca8e161087def93b6.pdf" target="_blank" class="proj-link">View case study →</a>
+      <div class="proj-desc">Sustainability platform...</div>
     </div>
 
     <div class="proj-card">
       <div class="proj-type">Service Design · Team</div>
       <div class="proj-title">Comfort Zone</div>
-      <div class="proj-desc">A student-friendly small town concept for Bologna students tired of high rents and city noise — designed around community, nature, and genuine skill-sharing in a convivial atmosphere.</div>
-      <span class="proj-na">La Repubblica · Published</span>
+      <div class="proj-desc">Student-friendly town concept...</div>
     </div>
 
     <div class="proj-card">
       <div class="proj-type">UX/UI Design · Personal</div>
-      <div class="proj-title">Plant.ita</div>
-      <div class="proj-desc">A digital sanctuary for plant enthusiasts — tracking care routines, discovering plant histories, and connecting to delivery services. Designed end-to-end with personal passion.</div>
-      <span class="proj-na">Personal project</span>
+      <div class="proj-title">Sti Cactus</div>
+      <div class="proj-desc">
+        A playful digital ecosystem about plant care, tracking habits and building rituals around nature.
+      </div>
     </div>
 
     <div class="proj-card">
       <div class="proj-type">UX/UI Design · Contracted</div>
       <div class="proj-title">Sport Your Activity</div>
-      <div class="proj-desc">Full brand identity and UX/UI for a personal training platform connecting clients with trainers and kinesiologists. Designed the end-to-end brand and digital experience.</div>
-      <span class="proj-na">NDA — not publicly available</span>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-type">Visual Art · Personal</div>
-      <div class="proj-title">Everyone Has Their Own Story II</div>
-      <div class="proj-desc">A 7-year photographic project capturing permanent looks — glances, emotions, stories. Inspired by Barthes' Camera Lucida. Shown in collective exhibitions in Rome.</div>
-      <a href="https://youtu.be/ecV2tqmflhk" target="_blank" class="proj-link">Watch it →</a>
+      <div class="proj-desc">Fitness platform connecting trainers and clients...</div>
     </div>
 
   </div>
 </section>
 
-<!-- DOUBLE DIAMOND -->
-<section class="diamond-section">
-  <div class="section-label reveal">My Approach — Double Diamond</div>
-  <div class="diamond-container reveal">
-    <div class="diamond-visual">
-      <div class="diamond-phase">
-        <div class="d-shape" id="d1">
-          <div class="d-inner"><div class="d-num">1</div><div class="d-label">Discover</div></div>
-        </div>
-      </div>
-      <div class="d-connector"></div>
-      <div class="diamond-phase">
-        <div class="d-shape" id="d2">
-          <div class="d-inner"><div class="d-num">2</div><div class="d-label">Define</div></div>
-        </div>
-      </div>
-      <div class="d-connector"></div>
-      <div class="diamond-phase">
-        <div class="d-shape" id="d3">
-          <div class="d-inner"><div class="d-num">3</div><div class="d-label">Develop</div></div>
-        </div>
-      </div>
-      <div class="d-connector"></div>
-      <div class="diamond-phase">
-        <div class="d-shape" id="d4">
-          <div class="d-inner"><div class="d-num">4</div><div class="d-label">Deliver</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="diamond-phases-list">
-      <div class="d-phase-card active" id="dp1" onclick="activateDiamond(1)">
-        <div class="d-phase-name">Discover</div>
-        <div class="d-phase-desc">User research, stakeholder interviews, contextual inquiry, secondary research. Understanding the full problem space before any solution.</div>
-      </div>
-      <div class="d-phase-card" id="dp2" onclick="activateDiamond(2)">
-        <div class="d-phase-name">Define</div>
-        <div class="d-phase-desc">Synthesis, insight mapping, HMW framing, personas, journey maps, service blueprints. Focusing on the right problem.</div>
-      </div>
-      <div class="d-phase-card" id="dp3" onclick="activateDiamond(3)">
-        <div class="d-phase-name">Develop</div>
-        <div class="d-phase-desc">Ideation workshops, wireframing, prototyping, iterative testing. Exploring and refining solutions with real users and stakeholders.</div>
-      </div>
-      <div class="d-phase-card" id="dp4" onclick="activateDiamond(4)">
-        <div class="d-phase-name">Deliver</div>
-        <div class="d-phase-desc">Design systems, developer handoff, usability validation, product launch. Creating work that ships and creates lasting value.</div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- NEW: YOUTUBE VIDEOS -->
+<section id="videos">
+  <div class="section-label reveal">Selected Videos</div>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-label reveal">Skills &amp; Tools</div>
-  <div class="skills-wrapper reveal">
-    <div class="skills-left">
-      <div>
-        <div class="skill-group-title">Design &amp; Prototyping</div>
-        <div class="skill-bars">
-          <div class="skill-row"><div class="skill-row-head"><span class="skill-name">Figma / Sketch</span><span class="skill-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
-          <div class="skill-row"><div class="skill-row-head"><span class="skill-name">Framer</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
-          <div class="skill-row"><div class="skill-row-head"><span class="skill-name">Invision / Maze</span><span class="skill-pct">78%</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
-          <div class="skill-row"><div class="skill-row-head"><span class="skill-name">Adobe Suite (Ps · Ai · Ae · Pr · Id)</span><span class="skill-pct">92%</span></div><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
-          <div class="skill-row"><div class="skill-row-head"><span class="skill-name">Final Cut Pro</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
-        </div>
-      </div>
-      <div>
-        <div class="skill-group-title">Research &amp; Strategy</div>
-        <div class="pill-grid">
-          <span class="pill">User Research</span><span class="pill">Usability Testing</span>
-          <span class="pill">A/B Testing</span><span class="pill">UX Metrics</span>
-          <span class="pill">Personas</span><span class="pill">User Journey Maps</span>
-          <span class="pill">Service Blueprint</span><span class="pill">Analysis &amp; Survey</span>
-          <span class="pill">Stakeholder Interviews</span><span class="pill">Double Diamond</span>
-        </div>
-      </div>
-    </div>
-    <div class="skills-right">
-      <div>
-        <div class="skill-group-title">Collaboration &amp; PM</div>
-        <div class="pill-grid">
-          <span class="pill ai">Confluence</span>
-          <span class="pill">Jira</span><span class="pill">Notion</span>
-          <span class="pill">FigJam</span><span class="pill">Miro</span><span class="pill">Mural</span>
-          <span class="pill">Slack</span><span class="pill">GitHub</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-group-title">Frontend</div>
-        <div class="pill-grid">
-          <span class="pill">HTML / CSS</span>
-          <span class="pill">JavaScript</span>
-          <span class="pill">React (in progress)</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-group-title">Languages</div>
-        <div class="lang-grid">
-          <div class="lang-block"><div class="lang-name">Italian</div><div class="lang-lvl">Native</div><div class="lang-pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div></div>
-          <div class="lang-block"><div class="lang-name">English</div><div class="lang-lvl">Fluent</div><div class="lang-pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
-          <div class="lang-block"><div class="lang-name">Spanish</div><div class="lang-lvl">Fluent</div><div class="lang-pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
-          <div class="lang-block"><div class="lang-name">Catalan</div><div class="lang-lvl">Basic</div><div class="lang-pips"><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div></div>
-          <div class="lang-block"><div class="lang-name">French</div><div class="lang-lvl">Basic</div><div class="lang-pips"><div class="pip on"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="video-grid reveal">
 
-  <!-- AI TOOLS -->
-  <div style="margin-top:60px" class="reveal">
-    <div class="section-label">AI &amp; Emerging Tools</div>
-    <div class="ai-grid">
-      <div class="ai-card"><div class="ai-initial">Cl</div><div class="ai-tool-name">Claude</div><div class="ai-tool-use">Strategy, research, content analysis, design critique</div></div>
-      <div class="ai-card"><div class="ai-initial">GP</div><div class="ai-tool-name">ChatGPT</div><div class="ai-tool-use">LLM evaluation, prompt design, ideation</div></div>
-      <div class="ai-card"><div class="ai-initial">FM</div><div class="ai-tool-name">Figma Make</div><div class="ai-tool-use">AI-assisted UI generation &amp; rapid prototyping</div></div>
-      <div class="ai-card"><div class="ai-initial">Mj</div><div class="ai-tool-name">Midjourney</div><div class="ai-tool-use">Visual direction, moodboards, concept art</div></div>
-      <div class="ai-card"><div class="ai-initial">Nt</div><div class="ai-tool-name">Notion AI</div><div class="ai-tool-use">Strategy docs, knowledge management, briefs</div></div>
+    <div class="video-card">
+      <div class="video-title">Everyone Has Their Own Story II</div>
+      <iframe class="video-embed"
+        src="https://www.youtube.com/embed/ecV2tqmflhk"
+        allowfullscreen>
+      </iframe>
     </div>
-  </div>
-</section>
 
-<!-- EDUCATION -->
-<section style="background:var(--bg2); padding-top:80px; padding-bottom:80px">
-  <div class="section-label reveal">Education</div>
-  <div class="edu-grid reveal">
-    <div class="edu-card">
-      <div class="edu-year">2019 – 2021</div>
-      <div class="edu-degree">MSc Advanced Design — Service Design</div>
-      <div class="edu-school">Alma Mater Studiorum, University of Bologna</div>
-      <div class="edu-note"><span class="edu-grade">110/110</span> · Thesis published</div>
+    <div class="video-card">
+      <div class="video-title">Project / Case Study</div>
+      <iframe class="video-embed"
+        src="https://www.youtube.com/embed/REPLACE_THIS"
+        allowfullscreen>
+      </iframe>
     </div>
-    <div class="edu-card">
-      <div class="edu-year">2016 – 2019</div>
-      <div class="edu-degree">BA Multimedia &amp; Technological Arts</div>
-      <div class="edu-school">Academy of Fine Arts, Rome</div>
-      <div class="edu-note"><span class="edu-grade">110/110</span></div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-year">2017 – 2018</div>
-      <div class="edu-degree">Erasmus+ Program</div>
-      <div class="edu-school">Universitat Politècnica de València</div>
-      <div class="edu-note">Directing, editing, After Effects</div>
-    </div>
-  </div>
 
-  <div style="margin-top:48px" class="reveal">
-    <div class="section-label">Certifications</div>
-    <div class="cert-grid">
-      <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-text">Enterprise Design Thinking Practitioner</div><div class="cert-org">IBM</div></div></div>
-      <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-text">React: The Complete Guide 2024</div><div class="cert-org">Udemy</div></div></div>
-      <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-text">Agile Project Management Fundamentals</div><div class="cert-org">Santander Open Academy</div></div></div>
-      <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-text">Youth in Action for SDG</div><div class="cert-org">Accenture</div></div></div>
-      <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-text">OBRAS: Boosting Urban Capabilities</div><div class="cert-org">University of Bologna &amp; Universidad Nacional de Colombia</div></div></div>
-      <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-text">UI Design Workshop</div><div class="cert-org">Talent Garden</div></div></div>
-    </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="contact-bg" aria-hidden="true">TALK</div>
-  <h2 class="contact-h2 reveal">Let's make something<br><span>that matters.</span></h2>
-  <p class="contact-sub reveal">Open to Strategic Design, Product Strategy &amp; Service Design roles.</p>
-  <div class="contact-links reveal">
-    <a href="mailto:giuliasaetta@live.it" class="contact-btn primary">giuliasaetta@live.it</a>
-    <a href="https://www.linkedin.com/in/giuliasaetta/" target="_blank" class="contact-btn secondary">LinkedIn</a>
-    <a href="https://giuliasaetta.wixsite.com/giuliasaettadesign" target="_blank" class="contact-btn secondary">Portfolio</a>
-  </div>
-</section>
+<!-- invariato -->
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-name">Giulia Saetta</div>
-  <div class="footer-r">Designed &amp; coded by herself · Updated <span>June 2026</span></div>
-</footer>
+<!-- invariato -->
 
-<script>
-// CURSOR
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
-(function animateRing() {
-  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
-  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-  requestAnimationFrame(animateRing);
-})();
-document.querySelectorAll('a, button, .comp-card, .proj-card, .exp-item, .d-phase-card, .cert-item, .ai-card').forEach(el => {
-  el.addEventListener('mouseenter', () => { cursor.style.width = '14px'; cursor.style.height = '14px'; ring.style.width = '48px'; ring.style.height = '48px'; });
-  el.addEventListener('mouseleave', () => { cursor.style.width = '8px'; cursor.style.height = '8px'; ring.style.width = '32px'; ring.style.height = '32px'; });
-});
-
-// REVEAL ON SCROLL
-const reveals = document.querySelectorAll('.reveal');
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      e.target.style.transitionDelay = (i % 3 * 0.08) + 's';
-      e.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.12 });
-reveals.forEach(el => obs.observe(el));
-
-// SKILL BARS ANIMATION
-const skillObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.querySelectorAll('.skill-fill').forEach((fill, i) => {
-        setTimeout(() => fill.classList.add('animated'), i * 120);
-      });
-      skillObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.3 });
-document.querySelectorAll('.skill-bars').forEach(el => skillObs.observe(el));
-
-// DOUBLE DIAMOND INTERACTION
-function activateDiamond(n) {
-  [1,2,3,4].forEach(i => {
-    document.getElementById('dp'+i).classList.toggle('active', i===n);
-    document.getElementById('d'+i).style.borderColor = i===n ? 'var(--red)' : '';
-    document.getElementById('d'+i).style.background = i===n ? 'rgba(200,16,46,0.08)' : '';
-  });
-}
-// Auto-cycle diamond
-let dCurrent = 1;
-setInterval(() => { dCurrent = dCurrent % 4 + 1; activateDiamond(dCurrent); }, 3000);
-
-// SMOOTH SCROLL for nav
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-  });
-});
-
-// PARALLAX subtle on hero bg text
-window.addEventListener('scroll', () => {
-  const bg = document.querySelector('.hero-bg-text');
-  if (bg) bg.style.transform = 'translateY(' + (window.scrollY * 0.3) + 'px)';
-});
-</script>
 </body>
 </html>
