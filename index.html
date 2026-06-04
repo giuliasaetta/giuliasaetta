@@ -1,6 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+/* =========================
+   GLOBAL RESET (FIX CRITICO)
+========================= */
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* 🔥 evita colonne strette */
+.edu-grid,
+.cert-grid,
+.practice-list,
+.practice-wrapper,
+.contact-inner,
+footer {
+  width: 100% !important;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================
+   SECTION LABEL
+========================= */
+.section-label{
+  font-size:13px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  opacity:0.6;
+  margin-bottom:20px;
+}
+
+/* =========================
+   PRACTICE LIST
+========================= */
+.practice-item{
+  padding:18px 0;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  transition: all .3s ease;
+}
+
+.practice-list{
+  width:100%;
+}
+
+/* LINK */
+.practice-link{
+  font-size:16px;
+  font-weight:500;
+  color:inherit;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  position:relative;
+  transition: all .25s ease;
+}
+
+/* underline animata rossa */
+.practice-link::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0%;
+  height:1px;
+  background:#ff3b3b;
+  transition:width .35s ease;
+}
+
+/* hover link */
+.practice-link:hover{
+  transform: translateX(6px);
+  color:#fff;
+}
+
+.practice-link:hover::after{
+  width:100%;
+}
+
+/* FRECCIA ANIMATA */
+.arrow{
+  color:#ff3b3b;
+  font-weight:700;
+  display:inline-block;
+  transition: transform .45s cubic-bezier(.2,.8,.2,1);
+}
+
+.practice-link:hover .arrow{
+  transform: translate(10px,-8px) rotate(18deg);
+}
+
+/* META */
+.practice-meta{
+  font-size:13px;
+  opacity:0.55;
+  margin-top:6px;
+  transition: all .3s ease;
+}
+
+.practice-item:hover .practice-meta{
+  opacity:0.9;
+  transform: translateX(3px);
+}
+
+/* =========================
+   CONTACT (FULL FIX)
+========================= */
+.contact-section{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  padding:120px 20px;
+  text-align:center;
+}
+
+.contact-inner{
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.contact-h2{
+  font-size:54px;
+  line-height:1.1;
+  margin:0;
+}
+
+.contact-sub{
+  font-size:16px;
+  opacity:0.7;
+  margin-top:20px;
+  max-width:520px;
+}
+
+.contact-links{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  margin-top:28px;
+  flex-wrap:wrap;
+}
+
+/* =========================
+   FOOTER FIX
+========================= */
+footer{
+  width:100%;
+  text-align:center;
+  padding:60px 20px;
+  opacity:0.8;
+}
+
+.footer-name{
+  font-size:16px;
+  font-weight:500;
+}
+
+.footer-r{
+  font-size:13px;
+  margin-top:8px;
+  opacity:0.7;
+}
+</style>
+
+<!-- =========================
+     PRACTICE SECTION
+========================= -->
+<div class="practice-wrapper" style="margin-top:48px">
+
+  <div class="section-label">Selected Publications & Exhibitions</div>
+
+  <div class="practice-list">
+
+    <div class="practice-item">
+      <a href="https://amslaurea.unibo.it/id/eprint/24202/" target="_blank" class="practice-link">
+        Origo — Artistic Connections <span class="arrow">↗</span>
+      </a>
+      <div class="practice-meta">University of Bologna · Published project</div>
+    </div>
+
+    <div class="practice-item">
+      <a href="https://innose.up.krakow.pl/blog/2021/02/08/how-we-can-stimulate-innovative-entrepreneurship-with-a-social-impact-among-young-people-looking-for-opportunities-or-aspiring-entrepreneurs-through-innovative-services/" target="_blank" class="practice-link">
+        Intense — Tech & Social Innovation <span class="arrow">↗</span>
+      </a>
+      <div class="practice-meta">Inn@se Conference · Presented work</div>
+    </div>
+
+    <div class="practice-item">
+      <a href="https://www.repubblica.it/" target="_blank" class="practice-link">
+        Comfort Zone <span class="arrow">↗</span>
+      </a>
+      <div class="practice-meta">La Repubblica · Featured publication</div>
+    </div>
+
+    <div class="practice-item">
+      <div class="practice-link">
+        12 POSE — Photography Collective
+      </div>
+      <div class="practice-meta">Rome · Exhibition</div>
+    </div>
+
+    <div class="practice-item">
+      <a href="https://abaroma.it/pulsazioni-multimediali-una-mostra-di-studenti-allex-mattatoio/" target="_blank" class="practice-link">
+        Mattatoio EX Macro <span class="arrow">↗</span>
+      </a>
+      <div class="practice-meta">Rome · Group exhibition</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =========================
+     CONTACT
+========================= -->
+<section class="contact-section" id="contact">
+
+  <div class="contact-inner">
+
+    <h2 class="contact-h2">
+      Let's make something<br>
+      <span>that matters.</span>
+    </h2>
+
+    <p class="contact-sub">
+      Open to Strategic Design, Product Strategy & Service Design roles.
+    </p>
+
+    <div class="contact-links">
+      <a href="mailto:giuliasaetta@live.it">Email</a>
+      <a href="https://www.linkedin.com/in/giuliasaetta/" target="_blank">LinkedIn</a>
+      <a href="https://giuliasaetta.wixsite.com/giuliasaettadesign" target="_blank">Portfolio</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer>
+  <div class="footer-name">Giulia Saetta</div>
+  <div class="footer-r">
+    Designed & coded by Giulia Saetta · Updated June 2026
+  </div>
+</footer>
 <style>
 <style>
 .page-container{
